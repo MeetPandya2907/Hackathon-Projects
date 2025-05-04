@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Homes & Condo Rentals - Airbnb</title>
+    <link rel="icon" href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Circular:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  
+  <body>
+    <div class="header-container">
+      <header>
+        <div class="top-nav">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="#" class="logo-link">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg" alt="Airbnb logo">
+            </a>
+          </div>
+          
+          <!-- Search Bar -->
+          <div class="search-container">
+            <div class="search-bar">
+              <div class="search-item">Anywhere</div>
+              <div class="search-divider"></div>
+              <div class="search-item">Any week</div>
+              <div class="search-divider"></div>
+              <div class="search-item search-guests">Add guests</div>
+              <div class="search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:block;fill:none;height:16px;width:16px;stroke:currentColor;stroke-width:4;overflow:visible" aria-hidden="true" role="presentation" focusable="false"><path fill="none" d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"></path></svg>
+              </div>
+            </div>
+            
+            <!-- Expanded Search (hidden by default) -->
+             
+            <div class="expanded-search">
+              
+              <div class="expanded-search-container">
+                
+                <div class="expanded-search-item">
+                  <div class="expanded-search-label">Where</div>
+                  <input class="expanded-search-input" type="text" placeholder="Search destinations">
+                </div>
+                <div class="expanded-search-item">
+                  <div class="expanded-search-label">Check in</div>
+                  <input class="expanded-search-input" type="text" placeholder="Add dates">
+                </div>
+                <div class="expanded-search-item">
+                  <div class="expanded-search-label">Check out</div>
+                  <input class="expanded-search-input" type="text" placeholder="Add dates">
+                </div>
+                <div class="expanded-search-item" id="guests">
+                  <div class="expanded-search-label">Who</div>
+                  <input class="expanded-search-input" type="text" placeholder="Add guests">
+                </div>
+                <button class="expanded-search-button">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="display:block;fill:none;height:16px;width:16px;stroke:currentColor;stroke-width:4;overflow:visible" aria-hidden="true" role="presentation" focusable="false"><path fill="none" d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"></path></svg>
+                  Search
+                </button>
+              </div>
+            </div>
+            
+            <!-- Guest Selector (hidden by default) -->
+            <div class="guest-selector">
+              <div class="guest-category">
+                <div class="guest-type-info">
+                  <div class="guest-type-title">Adults</div>
+                  <div class="guest-type-subtitle">Ages 13 or above</div>
+                </div>
+                <div class="guest-controls">
+                  <button class="guest-count-btn" id="adult-minus" disabled>-</button>
+                  <span class="guest-count" id="adult-count">0</span>
+                  <button class="guest-count-btn" id="adult-plus">+</button>
+                </div>
+              </div>
+              <div class="guest-category">
+                <div class="guest-type-info">
+                  <div class="guest-type-title">Children</div>
+                  <div class="guest-type-subtitle">Ages 2–12</div>
+                </div>
+                <div class="guest-controls">
+                  <button class="guest-count-btn" id="children-minus" disabled>-</button>
+                  <span class="guest-count" id="children-count">0</span>
+                  <button class="guest-count-btn" id="children-plus">+</button>
+                </div>
+              </div>
+              <div class="guest-category">
+                <div class="guest-type-info">
+                  <div class="guest-type-title">Infants</div>
+                  <div class="guest-type-subtitle">Under 2</div>
+                </div>
+                <div class="guest-controls">
+                  <button class="guest-count-btn" id="infant-minus" disabled>-</button>
+                  <span class="guest-count" id="infant-count">0</span>
+                  <button class="guest-count-btn" id="infant-plus">+</button>
+                </div>
+              </div>
+              <div class="guest-category">
+                <div class="guest-type-info">
+                  <div class="guest-type-title">Pets</div>
+                  <div class="guest-type-subtitle">Bringing a service animal?</div>
+                </div>
+                <div class="guest-controls">
+                  <button class="guest-count-btn" id="pet-minus" disabled>-</button>
+                  <span class="guest-count" id="pet-count">0</span>
+                  <button class="guest-count-btn" id="pet-plus">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- User Navigation -->
+          <div class="user-nav">
+            <button class="host-btn">Airbnb your home</button>
+            <button class="globe-btn" id="globe">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 16px; width: 16px; fill: currentcolor;"><path d="M8 .25a7.77 7.77 0 0 1 7.75 7.78 7.75 7.75 0 0 1-7.52 7.72h-.25A7.75 7.75 0 0 1 .25 8.24v-.25A7.75 7.75 0 0 1 8 .25zm1.95 8.5h-3.9c.15 2.9 1.17 5.34 1.88 5.5H8c.68 0 1.72-2.37 1.93-5.23zm4.26 0h-2.76c-.09 1.96-.53 3.78-1.18 5.08A6.26 6.26 0 0 0 14.17 9zm-9.67 0H1.8a6.26 6.26 0 0 0 3.94 5.08 12.59 12.59 0 0 1-1.16-4.7l-.03-.38zm1.2-6.58-.12.05a6.26 6.26 0 0 0-3.83 5.03h2.75c.09-1.83.48-3.54 1.06-4.81zm2.25-.42c-.7 0-1.78 2.51-1.94 5.5h3.9c-.15-2.9-1.18-5.34-1.89-5.5h-.07zm2.28.43.03.05a12.95 12.95 0 0 1 1.15 5.02h2.75a6.28 6.28 0 0 0-3.93-5.07z"></path></svg>
+            </button>
+            <div class="user-menu">
+              <svg class="menu-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px;">
+                <path d="M2 16h28M2 8h28M2 24h28" stroke="#222222" stroke-width="3" stroke-linecap="round"></path>
+              </svg>
+              <div class="user-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 100%; width: 100%; fill: currentcolor;"><path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 0 1 13 0 6.51 6.51 0 0 1-3.02 5.5 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"></path></svg>
+              </div>
+              
+              <!-- Dropdown Menu -->
+              <div class="dropdown-menu">
+                <div class="dropdown-section">
+                  <div class="dropdown-item login-trigger">Sign up</div>
+                  <div class="dropdown-item login-trigger">Log in</div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-section">
+                  <div class="dropdown-item">Airbnb your home</div>
+                  <div class="dropdown-item">Host an experience</div>
+                  <div class="dropdown-item">Help Centre</div>
+                </div>
+              </div>
+              <!-- End Dropdown Menu -->
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    
+    <!-- Categories and filters container -->
+    <div class="container">
+      <!-- Categories with arrow navigation -->
+      <div class="categories-container">
+        <button class="category-nav-btn prev-btn">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 12px; height: 12px; fill: currentColor;">
+            <path d="M20 28l-11.29289322-11.2928932c-.39052429-.3905243-.39052429-1.0236893 0-1.4142136L20 4"></path>
+          </svg>
+        </button>
+        
+      <div class="categories">
+        <div class="category active">
+          <div class="category-icon">
+            <img src="Images/i1.jpg" alt="">
+          </div>
+          <div class="category-name">Farms</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i2.webp" alt="">
+          </div>
+          <div class="category-name">Icons</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i3.jpg" alt="">
+          </div>
+          <div class="category-name">Amazing Pools</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i4.jpg" alt="">
+          </div>
+          <div class="category-name">Design</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i5.jpg" alt="">
+          </div>
+          <div class="category-name">Earth homes</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i6.jpg" alt="">
+          </div>
+          <div class="category-name">National Parks</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i7.jpg" alt="">
+          </div>
+          <div class="category-name">Amazing Views</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i8.jpg" alt="">
+          </div>
+          <div class="category-name">OMG!</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i9.jpg" alt="">
+          </div>
+          <div class="category-name">Beachfront</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i10.jpg" alt="">
+          </div>
+          <div class="category-name">Lake</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i11.jpg" alt="">
+          </div>
+          <div class="category-name">Top Of The World</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i12.jpg" alt="">
+          </div>
+          <div class="category-name">Castles</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i13.jpg" alt="">
+          </div>
+          <div class="category-name">Domes</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i14.jpg" alt="">
+          </div>
+          <div class="category-name">Tiny Homes</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i15.jpg" alt="">
+          </div>
+          <div class="category-name">CountrySide</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i16.jpg" alt="">
+          </div>
+          <div class="category-name">Cabins</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i17.jpg" alt="">
+          </div>
+          <div class="category-name">Historical Homes</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i18.jpg" alt="">
+          </div>
+          <div class="category-name">Arctic</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i19.jpg" alt="">
+          </div>
+          <div class="category-name">Boats</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i20.jpg" alt="">
+          </div>
+          <div class="category-name">Luxe</div>
+        </div>
+        <div class="category">
+          <div class="category-icon">
+            <img src="Images/i21.jpg" alt="">
+          </div>
+          <div class="category-name">Cycladic homes</div>
+        </div>
+      </div>
+      
+        <button class="category-nav-btn next-btn">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 12px; height: 12px; fill: currentColor;">
+            <path d="M12 4l11.2928932 11.2928932c.3905243.3905243.3905243 1.0236893 0 1.4142136L12 28"></path>
+          </svg>
+        </button>
+        
+        <!-- Right-aligned filters and price toggle -->
+        <div class="right-controls">
+        <div class="filters">
+          <button class="filter-btn">
+            <span class="filter-icon">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="width: 14px; height: 14px;">
+                <path d="M5 8c1.306 0 2.418.835 2.83 2H14v2H7.83A3.001 3.001 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.83 4H2V4h6.17A3.001 3.001 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" fill="currentColor"></path>
+              </svg>
+            </span>
+            Filters
+          </button>
+        </div>
+        <div class="price-toggle">
+          <div class="price-tag">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="width: 12px; height: 12px; fill: white; margin-right: 4px;">
+              <path d="M8.25 2a.75.75 0 0 0-.75.75v.25H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1l-1.26 1.26a.75.75 0 1 0 1.06 1.06l2.7-2.7 2.7 2.7a.75.75 0 0 0 1.06-1.06L10 12h1a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7.5v-.25A.75.75 0 0 0 6.75 2h-1.5zM11 10H4V5h7z"></path>
+            </svg>
+          </div>
+          <span class="price-toggle-label">Prices include all fees</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Properties -->
+      <div class="properties">
+        <!-- Property 1 -->
+         <a href="property.html?id=1" style="text-decoration: none;">
+
+           <div class="property" data-id="1">
+             <div class="property-img-container">
+               <div class="guest-favorite">
+                 <span class="guest-favorite-icon">★</span> Guest favorite
+                </div>
+                <img src="Images/img1.jpg" alt="Property">  
+                
+                <div class="property-favorite">♡</div>
+                <div class="image-arrows">
+                  <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Mumbai, Maharashtra</h3>
+              <p>Beachfront apartment with sea view</p>
+              <p>12-17 May</p>
+              <p class="property-price"><span>₹82,918</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.93
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 2 -->
+        <a href="property.html?id=2" style="text-decoration: none;">
+        <div class="property" data-id="2">
+          <div class="property-img-container">
+            <div class="guest-favorite">
+              <span class="guest-favorite-icon">★</span> Guest favorite
+            </div>
+            <img src="Images/img2.jpg" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Delhi, NCR</h3>
+              <p>Luxury loft in central location</p>
+              <p>12-17 May</p>
+              <p class="property-price"><span>₹1,19,139</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.82
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 3 -->
+        <a href="property.html?id=3" style="text-decoration: none;">
+        <div class="property" data-id="3">
+          <div class="property-img-container">
+            <img src="Images/img3.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Bangalore, Karnataka</h3>
+              <p>Modern condo with city views</p>
+              <p>3-8 May</p>
+              <p class="property-price"><span>₹1,10,527</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.82
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 4 -->
+        <a href="property.html?id=4" style="text-decoration: none;">
+        <div class="property" data-id="4">
+          <div class="property-img-container">
+            <img src="Images/img4.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Chennai, Tamil Nadu</h3>
+              <p>Canal and city views</p>
+              <p>3-8 May</p>
+              <p class="property-price"><span>₹1,06,649</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.95
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 5 -->
+        <a href="property.html?id=5" style="text-decoration: none;">
+        <div class="property" data-id="5">
+          <div class="property-img-container">
+            <div class="guest-favorite">
+              <span class="guest-favorite-icon">★</span> Guest favorite
+            </div>
+            <img src="Images/img5.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Kolkata, West Bengal</h3>
+              <p>Heritage apartment in colonial building</p>
+              <p>23-28 Dec</p>
+              <p class="property-price"><span>₹1,36,208</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.85
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 6 -->
+        <a href="property.html?id=6" style="text-decoration: none;">
+        <div class="property" data-id="6">
+          <div class="property-img-container">
+            <img src="Images/img6.jpg" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Hyderabad, Telangana</h3>
+              <p>Spacious villa near Hussain Sagar</p>
+              <p>21-26 Jun</p>
+              <p class="property-price"><span>₹1,88,227</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.91
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 7 -->
+        <a href="property.html?id=7" style="text-decoration: none;">
+        <div class="property" data-id="7">
+          <div class="property-img-container">
+            <img src="Images/img7.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Shimla, Himachal Pradesh</h3>
+              <p>Mountain views</p>
+              <p>9-14 Jul</p>
+              <p class="property-price"><span>₹1,39,338</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.88
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 8 -->
+        <a href="property.html?id=8" style="text-decoration: none;">
+        <div class="property" data-id="8">
+          <div class="property-img-container">
+            <img src="Images/img8.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Pune, Maharashtra</h3>
+              <p>486 kilometres from Mumbai</p>
+              <p>5-10 Dec</p>
+              <p class="property-price"><span>₹1,94,044</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.93
+            </div>
+          </div>
+        </div>
+        </a>
+      </div>
+      
+      <!-- Additional Properties -->
+      <div class="properties">
+        <!-- Property 9 -->
+        <a href="property.html?id=9" style="text-decoration: none;">
+        <div class="property" data-id="9">
+          <div class="property-img-container">
+            <img src="Images/img9.jpg" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Goa</h3>
+              <p>Beachfront villa in North Goa</p>
+              <p>7-12 June</p>
+              <p class="property-price"><span>₹1,56,780</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.97
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 10 -->
+        <a href="property.html?id=10" style="text-decoration: none;">
+        <div class="property" data-id="10">
+          <div class="property-img-container">
+            <div class="guest-favorite">
+              <span class="guest-favorite-icon">★</span> Guest favorite
+            </div>
+            <img src="Images/img1.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Kochi, Kerala</h3>
+              <p>Waterfront home with backwater views</p>
+              <p>14-19 August</p>
+              <p class="property-price"><span>₹92,500</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.89
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 11 -->
+        <a href="property.html?id=11" style="text-decoration: none;">
+        <div class="property" data-id="11">
+          <div class="property-img-container">
+            <img src="Images/img2.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Jaipur, Rajasthan</h3>
+              <p>Royal haveli with courtyard</p>
+              <p>3-8 October</p>
+              <p class="property-price"><span>₹1,78,350</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.95
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 12 -->
+        <a href="property.html?id=12" style="text-decoration: none;">
+        <div class="property" data-id="12">
+          <div class="property-img-container">
+            <div class="guest-favorite">
+              <span class="guest-favorite-icon">★</span> Guest favorite
+            </div>
+            <img src="Images/img9.avif" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Agra, Uttar Pradesh</h3>
+              <p>Taj Mahal view from private balcony</p>
+              <p>22-27 September</p>
+              <p class="property-price"><span>₹2,14,620</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.98
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 13 -->
+        <a href="property.html?id=13" style="text-decoration: none;">
+        <div class="property" data-id="13">
+          <div class="property-img-container">
+            <img src="Images/img10.jpg" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Varanasi, Uttar Pradesh</h3>
+              <p>Riverside heritage homestay</p>
+              <p>15-20 May</p>
+              <p class="property-price"><span>₹1,50,000</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.90
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 14 -->
+        <a href="property.html?id=14" style="text-decoration: none;">
+        <div class="property" data-id="14">
+          <div class="property-img-container">
+            <img src="Images/img11.jpg" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Darjeeling, West Bengal</h3>
+              <p>Tea estate cottage with Himalayan views</p>
+              <p>10-15 June</p>
+              <p class="property-price"><span>₹1,20,000</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.85
+            </div>
+          </div>
+        </div>
+        </a>
+        
+        <!-- Property 15 -->
+        <a href="property.html?id=15" style="text-decoration: none;">
+        <div class="property" data-id="15">
+          <div class="property-img-container">
+            <img src="Images/img12.jpg" alt="Property">
+            <div class="property-favorite">♡</div>
+            <div class="image-arrows">
+              <div class="arrow prev-arrow">❮</div>
+              <div class="arrow next-arrow">❯</div>
+            </div>
+            <div class="image-nav">
+              <div class="image-dot active"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+              <div class="image-dot"></div>
+            </div>
+          </div>
+          <div class="property-details">
+            <div class="property-info">
+              <h3>Ahmedabad, Gujarat</h3>
+              <p>Contemporary apartment with Sabarmati views</p>
+              <p>5-10 July</p>
+              <p class="property-price"><span>₹1,30,000</span> <span class="price-for-nights">for 5 nights</span></p>
+            </div>
+            <div class="property-rating">
+              ★ 4.88
+            </div>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Show Map Button -->
+    <button class="show-map-button" id="toggleMapButton">
+      Show map
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 16px;  width: 16px; fill: var(--linaria-theme_palette-white);"><path d="M31.25 3.75a2.29 2.29 0 0 0-1.01-1.44A2.29 2.29 0 0 0 28.5 2L21 3.67l-10-2L2.5 3.56A2.29 2.29 0 0 0 .7 5.8v21.95a2.28 2.28 0 0 0 1.06 1.94A2.29 2.29 0 0 0 3.5 30L11 28.33l10 2 8.49-1.89a2.29 2.29 0 0 0 1.8-2.24V4.25a2.3 2.3 0 0 0-.06-.5zM12.5 25.98l-1.51-.3L9.5 26H9.5V4.66l1.51-.33 1.49.3v21.34zm10 1.36-1.51.33-1.49-.3V6.02l1.51.3L22.5 6h.01v21.34z"></path></svg>
+    </button>
+    
+    <!-- Map Container -->
+    <div id="mapContainer" class="map-container">
+      <div id="map" class="map"></div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li>Help Center</li>
+              <li>AirCover</li>
+              <li>Anti-discrimination</li>
+              <li>Disability support</li>
+              <li>Cancellation options</li>
+              <li>Report neighborhood concern</li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Community</h3>
+            <ul class="footer-links">
+              <li>Airbnb.org: disaster relief</li>
+              <li>Combating discrimination</li>
+              <li>Support Afghan refugees</li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Hosting</h3>
+            <ul class="footer-links">
+              <li>Airbnb your home</li>
+              <li>AirCover for Hosts</li>
+              <li>Hosting resources</li>
+              <li>Community forum</li>
+              <li>Hosting responsibly</li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Airbnb</h3>
+            <ul class="footer-links">
+              <li>Newsroom</li>
+              <li>New features</li>
+              <li>Careers</li>
+              <li>Investors</li>
+              <li>Gift cards</li>
+              <li>Airbnb Luxe</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="footer-left">
+            <div>© 2023 Airbnb, Inc.</div>
+            <div>·</div>
+            <div>Privacy</div>
+            <div>·</div>
+            <div>Terms</div>
+            <div>·</div>
+            <div>Sitemap</div>
+          </div>
+          <div class="footer-right">
+            <div class="language">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px;">
+                <path d="M8 0.038a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14.5a6.5 6.5 0 0 1 0-13 6.5 6.5 0 0 1 0 13z" fill="currentColor"></path>
+                <path d="M11.5 8a3.5 3.5 0 0 1-7 0 3.5 3.5 0 0 1 7 0z" fill="currentColor"></path>
+                <path d="M8 1.5a6.5 6.5 0 0 1 6.5 6.5h-13A6.5 6.5 0 0 1 8 1.5zM8 14.5a6.5 6.5 0 0 1-6.5-6.5h13a6.5 6.5 0 0 1-6.5 6.5z" fill="currentColor"></path>
+              </svg>
+              English (US)
+            </div>
+            <div>$ USD</div>
+            <div class="social">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px;">
+                <path d="M16 16c2.9 0 5.33-2.42 5.33-5.33S18.9 5.33 16 5.33s-5.33 2.43-5.33 5.34 2.42 5.33 5.33 5.33zm0-9.33c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm7.33 9.33H8.67C6.59 16 4 17.8 4 21.33V23h24v-1.67C28 17.8 25.41 16 23.33 16zM26.67 21.67H5.33v-.34c0-2.5 1.97-4 3.34-4h14.66c1.38 0 3.34 1.5 3.34 4v.34z"></path>
+              </svg>
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px;">
+                <path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 0 1 13 0 6.51 6.51 0 0 1-3.02 5.5 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"></path></svg>
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px;">
+                <path d="M30.7 7.77c-1.5-1.5-3.35-2.25-5.5-2.25H6.8c-2.15 0-4 .75-5.5 2.25C-.2 9.27-.95 11.12-.95 13.27v5.46c0 2.15.75 4 2.25 5.5 1.5 1.5 3.35 2.25 5.5 2.25h18.4c2.15 0 4-.75 5.5-2.25 1.5-1.5 2.25-3.35 2.25-5.5v-5.46c0-2.15-.75-4-2.25-5.5zm-10.12 8.93l-6.9 4.12c-.12.07-.25.1-.38.1-.07 0-.15-.01-.22-.04a.63.63 0 0 1-.4-.59V12.1c0-.25.13-.48.34-.59.21-.11.46-.1.67.02l6.9 4.19c.2.12.32.33.32.56 0 .23-.12.44-.32.56v-.14z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+      <div class="login-modal-content">
+        <div class="login-modal-header">
+          <span class="login-close">&times;</span>
+          <h2>Log in or sign up</h2>
+        </div>
+        <div class="login-modal-body">
+          <h3>Welcome to Airbnb</h3>
+          
+          <div class="country-selector">
+            <div class="country-dropdown">
+              <span>Country/Region</span>
+              <select id="countrySelect">
+                <option value="in">India (+91)</option>
+                <option value="us">United States (+1)</option>
+                <option value="uk">United Kingdom (+44)</option>
+                <option value="au">Australia (+61)</option>
+                <option value="ca">Canada (+1)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="phone-input">
+            <input type="tel" id="phoneNumber" placeholder="Phone number">
+          </div>
+          
+          <p class="login-info-text">We'll call or text you to confirm your number. Standard message and data rates apply. <a href="#">Privacy Policy</a></p>
+          
+          <button class="continue-btn">Continue</button>
+          
+          <div class="divider">
+            <span>or</span>
+          </div>
+          
+          <div class="social-login">
+            <button class="social-btn google-btn">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+              Continue with Google
+            </button>
+            
+            <button class="social-btn apple-btn">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+              Continue with Apple
+            </button>
+            
+            <button class="social-btn email-btn">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path>
+              </svg>
+              Continue with email
+            </button>
+            
+            <button class="social-btn facebook-btn">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+              Continue with Facebook
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="globe-container">
+      <div class="login-modal" id="loginModal">
+        <div class="login-modal-content">
+          <div class="login-modal-header">
+            <span class="login-close">&times;</span>
+            <h2>Log in or sign up</h2>
+          </div>
+          <div class="login-modal-body">
+            <h3>Welcome to Airbnb</h3>
+            
+            <div class="country-selector">
+              <div class="country-dropdown">
+                <span>Country/Region</span>
+                <select id="countrySelect">
+                  <option value="in">India (+91)</option>
+                  <option value="us">United States (+1)</option>
+                  <option value="uk">United Kingdom (+44)</option>
+                  <option value="au">Australia (+61)</option>
+                  <option value="ca">Canada (+1)</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="phone-input">
+              <input type="tel" id="phoneNumber" placeholder="Phone number">
+            </div>
+            
+            <p class="login-info-text">We'll call or text you to confirm your number. Standard message and data rates apply. <a href="#">Privacy Policy</a></p>
+            
+            <button class="continue-btn">Continue</button>
+            
+            <div class="divider">
+              <span>or</span>
+            </div>
+            
+            <div class="social-login">
+              <button class="social-btn google-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                Continue with Google
+              </button>
+              
+              <button class="social-btn apple-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+                Continue with Apple
+              </button>
+              
+              <button class="social-btn email-btn">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path>
+                </svg>
+                Continue with email
+              </button>
+              
+              <button class="social-btn facebook-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                Continue with Facebook
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Globe Modal -->
+    <div class="globe-modal" id="globeModal">
+      <div class="globe-modal-content">
+        <button class="globe-close-btn">&times;</button>
+        
+        <div class="globe-tabs">
+          <div class="globe-tab active" data-tab="language">Language and region</div>
+          <div class="globe-tab" data-tab="currency">Currency</div>
+        </div>
+        
+        <div class="globe-tab-content" id="language-content">
+          <div class="translation-option">
+            <div class="translation-label">
+              <span>Translation</span>
+              <img src="https://a0.muscache.com/pictures/adfd79b6-21ed-4a65-a6b7-ac1e8522c0d7.jpg" alt="Translation" width="24">
+            </div>
+            <div class="translation-text">Automatically translate descriptions and reviews to English.</div>
+            <label class="toggle-switch">
+              <input type="checkbox" checked>
+              <span class="toggle-slider round"></span>
+            </label>
+          </div>
+          
+          <h3>Suggested languages and regions</h3>
+          
+          <div class="language-region-grid">
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">United States</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">United Kingdom</div>
+            </div>
+            <div class="language-option">
+              <div>हिन्दी</div>
+              <div class="region">भारत</div>
+            </div>
+            <div class="language-option">
+              <div>ಕನ್ನಡ</div>
+              <div class="region">ಭಾರತ</div>
+            </div>
+            <div class="language-option">
+              <div>मराठी</div>
+              <div class="region">भारत</div>
+            </div>
+          </div>
+          
+          <h3>Choose a language and region</h3>
+          
+          <div class="language-region-grid">
+            <div class="language-option selected">
+              <div>English</div>
+              <div class="region">India</div>
+            </div>
+            <div class="language-option">
+              <div>Azərbaycan dili</div>
+              <div class="region">Azərbaycan</div>
+            </div>
+            <div class="language-option">
+              <div>Bahasa Indonesia</div>
+              <div class="region">Indonesia</div>
+            </div>
+            <div class="language-option">
+              <div>Bosanski</div>
+              <div class="region">Bosna i Hercegovina</div>
+            </div>
+            <div class="language-option">
+              <div>Català</div>
+              <div class="region">Espanya</div>
+            </div>
+            
+            <div class="language-option">
+              <div>Čeština</div>
+              <div class="region">Česká republika</div>
+            </div>
+            <div class="language-option">
+              <div>Crnogorski</div>
+              <div class="region">Crna Gora</div>
+            </div>
+            <div class="language-option">
+              <div>Dansk</div>
+              <div class="region">Danmark</div>
+            </div>
+            <div class="language-option">
+              <div>Deutsch</div>
+              <div class="region">Deutschland</div>
+            </div>
+            <div class="language-option">
+              <div>Deutsch</div>
+              <div class="region">Österreich</div>
+            </div>
+            
+            <div class="language-option">
+              <div>Deutsch</div>
+              <div class="region">Schweiz</div>
+            </div>
+            <div class="language-option">
+              <div>Deutsch</div>
+              <div class="region">Luxemburg</div>
+            </div>
+            <div class="language-option">
+              <div>Eesti</div>
+              <div class="region">Eesti</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">Australia</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">Canada</div>
+            </div>
+            
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">Guyana</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">Ireland</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">New Zealand</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">Singapore</div>
+            </div>
+            <div class="language-option">
+              <div>English</div>
+              <div class="region">United Arab Emirates</div>
+            </div>
+            
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Argentina</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Belice</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Bolivia</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Chile</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Colombia</div>
+            </div>
+            
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Costa Rica</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Ecuador</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">El Salvador</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">España</div>
+            </div>
+            <div class="language-option">
+              <div>Español</div>
+              <div class="region">Estados Unidos</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="globe-tab-content hidden" id="currency-content">
+          <h3>Choose a currency</h3>
+          
+          <div class="currency-grid">
+            <div class="currency-option selected">
+              <div>Indian rupee</div>
+              <div class="currency-code">INR – ₹</div>
+            </div>
+            <div class="currency-option">
+              <div>Australian dollar</div>
+              <div class="currency-code">AUD – $</div>
+            </div>
+            <div class="currency-option">
+              <div>Brazilian real</div>
+              <div class="currency-code">BRL – R$</div>
+            </div>
+            <div class="currency-option">
+              <div>Bulgarian lev</div>
+              <div class="currency-code">BGN – лв.</div>
+            </div>
+            <div class="currency-option">
+              <div>Canadian dollar</div>
+              <div class="currency-code">CAD – $</div>
+            </div>
+            
+            <div class="currency-option">
+              <div>Chilean peso</div>
+              <div class="currency-code">CLP – $</div>
+            </div>
+            <div class="currency-option">
+              <div>Chinese yuan</div>
+              <div class="currency-code">CNY – ¥</div>
+            </div>
+            <div class="currency-option">
+              <div>Colombian peso</div>
+              <div class="currency-code">COP – $</div>
+            </div>
+            <div class="currency-option">
+              <div>Costa Rican colon</div>
+              <div class="currency-code">CRC – ₡</div>
+            </div>
+            <div class="currency-option">
+              <div>Czech koruna</div>
+              <div class="currency-code">CZK – Kč</div>
+            </div>
+            
+            <div class="currency-option">
+              <div>Danish krone</div>
+              <div class="currency-code">DKK – kr</div>
+            </div>
+            <div class="currency-option">
+              <div>Egyptian pound</div>
+              <div class="currency-code">EGP – ج.م</div>
+            </div>
+            <div class="currency-option">
+              <div>Emirati dirham</div>
+              <div class="currency-code">AED – د.إ</div>
+            </div>
+            <div class="currency-option">
+              <div>Euro</div>
+              <div class="currency-code">EUR – €</div>
+            </div>
+            <div class="currency-option">
+              <div>Ghanaian cedi</div>
+              <div class="currency-code">GHS – GH₵</div>
+            </div>
+            
+            <div class="currency-option">
+              <div>Hong Kong dollar</div>
+              <div class="currency-code">HKD – $</div>
+            </div>
+            <div class="currency-option">
+              <div>Hungarian forint</div>
+              <div class="currency-code">HUF – Ft</div>
+            </div>
+            <div class="currency-option">
+              <div>Indonesian rupiah</div>
+              <div class="currency-code">IDR – Rp</div>
+            </div>
+            <div class="currency-option">
+              <div>Israeli new shekel</div>
+              <div class="currency-code">ILS – ₪</div>
+            </div>
+            <div class="currency-option">
+              <div>Japanese yen</div>
+              <div class="currency-code">JPY – ¥</div>
+            </div>
+            
+            <div class="currency-option">
+              <div>Kazakhstani tenge</div>
+              <div class="currency-code">KZT – ₸</div>
+            </div>
+            <div class="currency-option">
+              <div>Kenyan shilling</div>
+              <div class="currency-code">KES – KSh</div>
+            </div>
+            <div class="currency-option">
+              <div>Malaysian ringgit</div>
+              <div class="currency-code">MYR – RM</div>
+            </div>
+            <div class="currency-option">
+              <div>Mexican peso</div>
+              <div class="currency-code">MXN – $</div>
+            </div>
+            <div class="currency-option">
+              <div>Moroccan dirham</div>
+              <div class="currency-code">MAD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add JavaScript for interactivity -->
+    <script>
+      // Function to initialize Google Maps - will be called by Google Maps API
+      function initMap() {
+        console.log("Google Maps API loaded successfully");
+        // The actual map initialization happens in script.js
+        if (window.initializeGoogleMap) {
+          window.initializeGoogleMap();
+        }
+      }
+      
+      // Error handler for Google Maps
+      function gm_authFailure() {
+        console.error("Google Maps authentication failed");
+        const mapDiv = document.getElementById('map');
+        if (mapDiv) {
+          mapDiv.innerHTML = '<div style="display:flex; height:100%; align-items:center; justify-content:center; text-align:center; padding:20px; background:#f8f8f8;"><p style="font-size:16px; color:#717171;">Map could not be loaded. Please check your internet connection and try again.</p></div>';
+        }
+      }
+    </script>
+    
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPpZjvvIbGKESpfbzdvvJ0kdH_jmADRcs&callback=initMap" async defer></script>
+    
+    <!-- Main application script -->
+    <script src="script.js"></script>
+    
+    <!-- Firebase Authentication script -->
+    <script src="firebase-auth.js"></script>
+    
+    <!-- Firebase Database script -->
+    <script src="firebase-db.js"></script>
+  </body>
+</html>
