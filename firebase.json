@@ -1,0 +1,18 @@
+{
+  "emulators": {
+    "dataconnect": {
+      "dataDir": "dataconnect/.dataconnect/pgliteData"
+    }
+  },
+  "dataconnect": {
+    "source": "dataconnect"
+  }
+}
+{
+  "hosting": {
+    "site": "airbnb-clone-e6275-302d7",
+
+    "public": "public",
+    ...
+  }
+}
