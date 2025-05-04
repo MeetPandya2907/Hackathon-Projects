@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create array of images based on file path pattern
     let images = [];
     
-    if (originalSrc.includes("Images/")) {
+    if (originalSrc.includes("/")) {
       // For local files (img1.jpg, img2.jpg, etc.)
       const fileName = originalSrc.split("/").pop(); // Get file name
       const baseNum = fileName.match(/\d+/)[0]; // Extract number from filename
@@ -211,16 +211,16 @@ document.addEventListener('DOMContentLoaded', function() {
           if (extension === 'jpg') {
             // If original is jpg, try to use the same img number but in avif if available
             if (i % 2 === 0) {
-              images.push(`Images/img${imgNum}.${extension}`);
+              images.push(`img${imgNum}.${extension}`);
             } else {
-              images.push(`Images/img${imgNum}.avif`);
+              images.push(`img${imgNum}.avif`);
             }
           } else {
             // If original is avif, try to use the same img number but in jpg if available
             if (i % 2 === 0) {
-              images.push(`Images/img${imgNum}.${extension}`);
+              images.push(`img${imgNum}.${extension}`);
             } else {
-              images.push(`Images/img${imgNum}.jpg`);
+              images.push(`img${imgNum}.jpg`);
             }
           }
         }

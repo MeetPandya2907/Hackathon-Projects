@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Main image
         const mainImg = document.querySelector('.photo-large .photo-img');
         if (mainImg && property.images.length > 0) {
-            mainImg.src = `Images/${property.images[0]}`;
+            mainImg.src = `${property.images[0]}`;
             mainImg.alt = `${property.title} - Main Image`;
         }
         
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         smallImages.forEach((img, index) => {
             if (img && property.images[index + 1]) {
-                img.src = `Images/${property.images[index + 1]}`;
+                img.src = `${property.images[index + 1]}`;
                 img.alt = `${property.title} - Image ${index + 2}`;
             }
         });
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 rating: 4.95,
                 reviews: 19,
                 images: ['img1.jpg', 'img2.jpg', 'img3.avif', 'img4.avif', 'img5.avif'],
-                description: 'Discover a slice of paradise, Nestled in the embrace of majestic mountains, our villa is a haven of luxury and natural beauty. Immerse yourself in the serenity of a private pool, soak in breathtaking mountain views from the gazebo, and gather around the bonfire for magical evenings. It\'s not just accommodation; it\'s an unforgettable experience where every detail has been crafted to ensure your stay is exceptional. Embrace the allure of nature and luxury, making your stay a memory to treasure....',
+                description: 'Discover a slice of paradise, Nestled in the embrace of majestic mountains, our villa is a haven of luxury and natural beauty. Immerse yourself in the serenity of a private pool, soak in breathtaking mountain views from the gazebo, and gather around the bonfire for magical evenings. It\'s not just accommodation; it's an unforgettable experience where every detail has been crafted to ensure your stay is exceptional. Embrace the allure of nature and luxury, making your stay a memory to treasure....',
                 features: ['Self check-in', 'Designed for staying cool', 'Outdoor entertainment', 'Pool', 'Wifi', 'Free parking'],
                 host: {
                     name: 'Viganesh',

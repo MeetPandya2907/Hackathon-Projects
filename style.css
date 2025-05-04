@@ -1493,35 +1493,3 @@ input:checked + .toggle-slider:before {
   background-color: #e8f5e9;
   color: #388e3c;
 }
-
-/* Spinner animation for sign-in buttons */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.social-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.auth-error {
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  background-color: #ffebee;
-  color: #c62828;
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.auth-error strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-.auth-error a {
-  color: #c62828;
-  text-decoration: underline;
-  font-weight: 500;
-}
